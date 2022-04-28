@@ -1,33 +1,48 @@
 #include <stdio.h>
-#include <locale.h>
+#include <stdlib.h>
 
+void DesenhaLinha();
+void DesligaPrograma();
 int main () {
 
-    //Declara o português como lingua padrão pro programa
-    setlocale(LC_ALL,"Portuguese");
+    double salario, bonus = 1, numeroDeHoras, valorDaHora;
 
-    double salario, bonus = 1, numero_de_horas, valor_da_hora;
-
-    printf("\tLista 2 - Exercício 7\n\n");
-
+    //Titulo do programa
+    DesenhaLinha();
+    printf("\tLista 2 - Exercicio 7\n");
+    DesenhaLinha();
+    printf("\n\n");
 
     printf("Digite a quantidade de horas trabalhadas essa semana: ");
-    scanf("%lf",&numero_de_horas);
+    scanf("%lf",&numeroDeHoras);
     printf("Digite o valor da sua hora: R$ ");
-    scanf("%lf", &valor_da_hora);
+    scanf("%lf", &valorDaHora);
 
     //Altera o valor do bonus
-    if (numero_de_horas > 40 && numero_de_horas <= 60 )
+    if (numeroDeHoras > 40 && numeroDeHoras <= 60 )
         bonus = 1.5;
-    else if (numero_de_horas > 60)
+    else if (numeroDeHoras > 60)
         bonus = 2;
 
-    salario = (numero_de_horas * valor_da_hora) * bonus;
+    salario = (numeroDeHoras * valorDaHora) * bonus;
 
-    printf("Seu salário semanal foi de %.2lf R$", salario);
+    DesenhaLinha();
+    printf("Seu salario semanal foi de %.2lf R$\n", salario);
+
+    DesligaPrograma();
 
 
+}
+void DesenhaLinha(){
 
+printf("====================================\n");
 
+}
+void DesligaPrograma(){
+    DesenhaLinha();
+    printf("Fim do Programa. Desligando...");
+    sleep(1);
+    exit(0);
 
-};
+}
+

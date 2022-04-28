@@ -1,68 +1,82 @@
 #include <stdio.h>
-#include <locale.h>
+#include <stdlib.h>
 
-void linha();
+void DesenhaLinha();
+void DesligaPrograma();
 int main (){
-
-    //Determina o português como lingua padrão pro programa
-    setlocale(LC_ALL,"Portuguese");
 
     char operacao;
     float num1, num2;
-    int resposta;
+    int resposta, aux;
 
-    printf("\tLista 1 - Exercício 3\n\n");
+    DesenhaLinha();
+    printf("\tLista 1 - Exercecio 3\n");
+    DesenhaLinha();
+    printf("\n\n");
 
     while(1){
-        printf("Digite a operação que deseja realizar(+,-,/ ou *): ");
-        scanf("%c", &operacao);
+        printf("Digite a operacao que deseja realizar(+,-,/ ou *): ");
+        scanf( "%c", &operacao);
         fflush(stdin);
-        //Realiza a operação desejada
+        aux = 0;
+        //Realiza a operacao desejada
         switch (operacao){
             case '+':
-                linha();
-                printf("Digite os números que deseja somar: ");
-                scanf("%f %f", &num1, &num2);
-                printf("A soma entre %.2f e %.2f é %.2f\n",num1, num2, num1 + num2);
+                DesenhaLinha();
+                printf("Digite os numeros que deseja somar: ");
+                scanf(" %f %f", &num1, &num2);
+                DesenhaLinha();
+                printf("A soma entre %.2f e %.2f eh %.2f\n",num1, num2, num1 + num2);
+                DesenhaLinha();
                 break;
             case '-':
-                linha();
-                printf("Digite os números que deseja subtrair: ");
-                scanf("%f %f", &num1, &num2);
-                printf("A diferença entre %.2f e %.2f é %.2f\n",num1, num2, num1 - num2);
+                DesenhaLinha();
+                printf("Digite os numeros que deseja subtrair: ");
+                scanf(" %f %f", &num1, &num2);
+                DesenhaLinha();
+                printf("A diferenca entre %.2f e %.2f eh %.2f\n",num1, num2, num1 - num2);
+                DesenhaLinha();
                 break;
             case '/':
-                linha();
+                DesenhaLinha();
                 while (1){
-                    printf("Digite os números que deseja dividir: ");
-                    scanf("%f %f", &num1, &num2);
+                    printf("Digite os numeros que deseja dividir: ");
+                    scanf(" %f %f", &num1, &num2);
                     if (num2 == 0){
-                        printf("Por favor digite uma divisão válida\n");
+                        printf("Por favor digite uma divisao valida\n");
                         continue;
                     }
                     break;
                 }
-                printf("A razão entre %.2f e %.2f é %.2f\n",num1, num2, num1 / num2);
+                DesenhaLinha();
+                printf("A razao entre %.2f e %.2f eh %.2f\n",num1, num2, num1 / num2);
+                DesenhaLinha();
                 break;
             case '*':
-                linha();
-                printf("Digite os números que deseja multiplicar: ");
-                scanf("%f %f", &num1, &num2);
-                printf("O produto entre %.2f e %.2f é %.2f\n",num1, num2, num1 * num2);
+                DesenhaLinha();
+                printf("Digite os numeros que deseja multiplicar: ");
+                scanf(" %f %f", &num1, &num2);
+                DesenhaLinha();
+                printf("O produto entre %.2f e %.2f eh %.2f\n",num1, num2, num1 * num2);
+                DesenhaLinha();
                 break;
             default:
-                printf("Digite uma operação válida!\n");
+                DesenhaLinha();
+                printf("Digite uma operacao valida!\n");
+                aux = 1;
                 break;
         };
-
-        printf("Você deseja realizar mais alguma operação: \n");
+        if (aux == 1)
+            continue;
+        printf("Voce deseja realizar mais alguma operacao: \n");
         printf("[1] Sim\n");
-        printf("[2] Não\n");
-        scanf("%d",&resposta);
-        if (resposta == 2)
+        printf("[2] Nao\n");
+        scanf(" %d",&resposta);
+        if (resposta == 2){
+            DesligaPrograma();
             break;
+        }
         fflush(stdin);
-
     };
 
 
@@ -70,10 +84,15 @@ int main (){
 
 };
 
-void linha(){
-
-//Imprime uma linha no console
+void DesenhaLinha(){
 
 printf("====================================\n");
 
 };
+void DesligaPrograma(){
+    DesenhaLinha();
+    printf("Fim do Programa. Desligando...");
+    sleep(1);
+    exit(0);
+
+}

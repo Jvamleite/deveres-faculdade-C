@@ -1,45 +1,45 @@
 #include <stdio.h>
-#include <locale.h>
+#include <stdlib.h>
 #define NUM 3
 
 void DeterminaMaiorMenor(int lista_numeros[NUM], int *pma, int *pme );
+void DesenhaLinha();
+void DesligaPrograma();
 int main (){
 
-    //Determina o português como lingua padrão pro programa
-    setlocale(LC_ALL,"Portuguese");
+    //Titulo do programa
+    DesenhaLinha();
+    printf("\tLista 1 - Exercicio 2\n");
+    DesenhaLinha();
+    printf("\n\n");
 
-    //Título do programa
-    printf("\tLista 1 - Exercício 2\n\n");
-
-    int lista_numeros[NUM], maior, menor;
-    int register cnt = 0;
+    int listaNumeros[NUM], maior, menor;
+    register int cnt = 0;
     float media;
 
-    printf("Digite três números inteiros: ");
-    scanf("%d %d %d",&lista_numeros[0],&lista_numeros[1],&lista_numeros[2]);
+    printf("Digite tres numeros inteiros: ");
+    scanf(" %d %d %d",&listaNumeros[0],&listaNumeros[1],&listaNumeros[2]);
+    DesenhaLinha();
 
+    DeterminaMaiorMenor(listaNumeros, &maior, &menor);
 
-    DeterminaMaiorMenor(lista_numeros, &maior, &menor);
+    printf("\nO maior numero entre %d, %d e %d eh o %d\n", listaNumeros[0], listaNumeros[1], listaNumeros[2], maior);
+    printf("O menor numero entre %d, %d e %d eh o %d\n", listaNumeros[0], listaNumeros[1], listaNumeros[2], menor);
 
-
-    printf("\nO maior número entre %d, %d e %d é o %d\n", lista_numeros[0], lista_numeros[1], lista_numeros[2], maior);
-    printf("O menor número entre %d, %d e %d é o %d\n", lista_numeros[0], lista_numeros[1], lista_numeros[2], menor);
-
-    //Determina e imprime quais são os pares
-    printf("Entre %d, %d e %d os pares são: ", lista_numeros[0],lista_numeros[1],lista_numeros[2]);
+    //Determina e imprime quais sao os pares
+    printf("Entre %d, %d e %d os pares sao: ", listaNumeros[0],listaNumeros[1],listaNumeros[2]);
     for(cnt = 0; cnt <= 2; cnt++){
-        if (lista_numeros[cnt] % 2 == 0)
-            printf("%d ", lista_numeros[cnt]);
+        if (listaNumeros[cnt] % 2 == 0)
+            printf("%d ", listaNumeros[cnt]);
     };
     printf("\n");
 
-    //Cálculo da média
-    media = (lista_numeros[0] + lista_numeros[1] + lista_numeros[2])/3;
+    //Calculo da media
+    media = (listaNumeros[0] + listaNumeros[1] + listaNumeros[2])/3;
 
-    printf("A média entre os números é %.2f", media);
+    printf("A media entre os numeros e %.2f\n", media);
 
-
-
+    DesligaPrograma();
 
 
 
@@ -47,19 +47,31 @@ int main (){
 
 
 };
-void DeterminaMaiorMenor(int lista_numeros[NUM], int *pma, int *pme ){
+void DeterminaMaiorMenor(int numeros[NUM], int *pma, int *pme ){
 
     register int cnt = 1;
 
-    *pma = lista_numeros[0];
-    *pme = lista_numeros[0];
+    *pma = numeros[0];
+    *pme = numeros[0];
     for (cnt = 1; cnt <= 2; cnt++){
-    if (lista_numeros[cnt] > *pma)
-        *pma = lista_numeros[cnt];
-    if (lista_numeros[cnt] < *pme)
-        *pme = lista_numeros[cnt];
+    if (numeros[cnt] > *pma)
+        *pma = numeros[cnt];
+    if (numeros[cnt] < *pme)
+        *pme = numeros[cnt];
     };
 
 
+
+}
+void DesenhaLinha(){
+
+printf("====================================\n");
+
+}
+void DesligaPrograma(){
+    DesenhaLinha();
+    printf("Fim do Programa. Desligando...");
+    sleep(1);
+    exit(0);
 
 }

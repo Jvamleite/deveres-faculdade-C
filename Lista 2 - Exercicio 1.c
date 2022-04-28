@@ -1,37 +1,60 @@
 #include <stdio.h>
-#include <locale.h>
+#include <stdlib.h>
 #define TRUE 1
 #define FALSE 0
 
-int verifica_se_e_primo(int num);
+int VerificaPrimo(int num);
 int main (){
-
-    //Declara o português como lingua padrão pro programa
-    setlocale(LC_ALL,"Portuguese");
 
     int numero, resultado;
 
-    printf("\tLista 2 - Exercício 1\n\n");
+    //Titulo do programa
+    DesenhaLinha();
+    printf("\tLista 2 - Exercicio 1\n");
+    DesenhaLinha();
+    printf("\n\n");
 
-    printf("Digite um número inteiro: ");
-    scanf("%d", &numero);
+    printf("Digite um numero inteiro: ");
+    scanf(" %d", &numero);
 
-    if (numero == 1)
-        printf("NUMERO NAO PRIMO");
-    else{
-        resultado = verifica_se_e_primo(numero);
-
-        if (resultado == TRUE)
-            printf("NUMERO PRIMO");
-        else
-            printf("NUMERO NAO PRIMO");
+    if (numero == 1){
+        DesenhaLinha();
+        printf("NUMERO NAO PRIMO\n");
     }
+    else{
+        resultado = VerificaPrimo(numero);
+
+        if (resultado == TRUE){
+            DesenhaLinha();
+            printf("NUMERO PRIMO\n");
+        }
+        else{
+            DesenhaLinha();
+            printf("NUMERO NAO PRIMO\n");
+        }
+    }
+
+    DesligaPrograma();
 
     return 0;
 
-};
+}
+void DesenhaLinha(){
 
-int verifica_se_e_primo(int num){
+printf("====================================\n");
+
+}
+void DesligaPrograma(){
+    DesenhaLinha();
+    printf("Fim do Programa. Desligando...");
+    sleep(1);
+    exit(0);
+
+}
+
+int VerificaPrimo(int num){
+
+    //Verifica se um nÃºmero Ã© primo contando seus divisores
 
     int divisores = 0;
     register int cnt = 1;

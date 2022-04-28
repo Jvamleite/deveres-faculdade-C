@@ -1,20 +1,23 @@
 #include <stdio.h>
 #include <locale.h>
 
+void DesenhaLinha();
+void DesligaPrograma();
 int main (){
 
-    //Determina o português como lingua padrão pro programa
-    setlocale(LC_ALL,"Portuguese");
-
-    int X,Z, soma = 0, quantidade_inteiros = 0;
+    int X,Z, soma = 0, quantidadeInteiros = 0;
     register int cnt;
 
-    printf("\tLista 2 - Exercício 5\n\n");
+    //Titulo do programa
+    DesenhaLinha();
+    printf("\tLista 2 - Exercicio 5\n");
+    DesenhaLinha();
+    printf("\n\n");
 
-    printf("Digite dois números inteiros(X e Z): ");
+    printf("Digite dois numeros inteiros(X e Z): ");
     scanf("%d %d", &X, &Z);
 
-    //Garante que Z vá ser maior que X
+    //Garante que Z va ser maior que X
     do{
         if (Z<X){
             printf("\nDigite outro valor para Z (Z deve ser maior que X): ");
@@ -26,14 +29,28 @@ int main (){
     for(cnt = X; soma<Z;cnt++){
         soma += cnt;
         printf("%d + ",cnt);
-        quantidade_inteiros++;
+        quantidadeInteiros++;
     }
 
-    //Formatação da saída
+    //Formatacao da saida
     printf("\b\b");
     printf("= %d\n",soma);
-    printf("Precisamos de %d inteiros",quantidade_inteiros);
+    printf("Precisamos de %d inteiros\n",quantidadeInteiros);
+
+    DesligaPrograma();
 
     return 0;
 
-};
+}
+void DesenhaLinha(){
+
+printf("====================================\n");
+
+}
+void DesligaPrograma(){
+    DesenhaLinha();
+    printf("Fim do Programa. Desligando...");
+    sleep(1);
+    exit(0);
+
+}

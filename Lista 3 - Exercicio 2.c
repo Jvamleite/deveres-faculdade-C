@@ -1,12 +1,19 @@
 #include <stdio.h>
 #include <locale.h>
+#include <stdlib.h>
 
-
+void DesenhaLinha();
+void DesligaPrograma();
 int main (){
 
+    //Declara o portugês como linha padrão pro programa
     setlocale(LC_ALL,"Portuguese");
 
-    printf("\tLista 3 - Exercício 2\n\n");
+    //Titulo do programa
+    DesenhaLinha();
+    printf("\tLista 3 - Exercicio 2\n");
+    DesenhaLinha();
+    printf("\n\n");
 
     printf("Questão 2: \n");
     printf("Seja o seguinte techo de programa: \n");
@@ -31,9 +38,19 @@ int main (){
     printf("Justificativa: por estar sem parenteses, ele seguiu a ordem de precedencia da esquerda para a direita, fez primeiro 3 * - *p\n");
     printf("Dividiu o resultado por *q e somou 7\n");
     
-
-
-
+    DesligaPrograma();
 
     return 0;
+}
+void DesenhaLinha(){
+
+printf("====================================\n");
+
+}
+void DesligaPrograma(){
+    DesenhaLinha();
+    printf("Fim do Programa. Desligando...");
+    sleep(1);
+    exit(0);
+
 }

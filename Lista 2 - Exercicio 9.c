@@ -1,35 +1,45 @@
 #include <stdio.h>
-#include <locale.h>
+#include <stdlib.h>
 #include <math.h>
 
+void DesenhaLinha();
+void DesligaPrograma();
 int INVERTE (unsigned int num);
 int main (){
 
-	//Declara o português como lingua padrão pro programa
-	setlocale(LC_ALL,"Portuguese");
+	unsigned int numero, numeroInvertido;
 
-	unsigned int numero, numero_invertido;
+	//Titulo do programa
+    DesenhaLinha();
+    printf("\tLista 2 - Exercicio 9\n");
+    DesenhaLinha();
+    printf("\n\n");
 
-	printf("\tLista 2 - Exercício 9\n\n");
-
-    printf("Digite o número que deseja inverter: ");
-    scanf("%u",&numero);
-
-
-    numero_invertido = INVERTE(numero);
-
-    printf("O número %d invertido fica %d", numero, numero_invertido);
+    printf("Digite o numero que deseja inverter: ");
+    scanf(" %u",&numero);
 
 
+    numeroInvertido = INVERTE(numero);
 
+    DesenhaLinha();
+    printf("O numero %d invertido fica %d\n", numero, numeroInvertido);
 
-
-
-
-
+    DesligaPrograma();
 
 	return 0;
-};
+}
+void DesenhaLinha(){
+
+printf("====================================\n");
+
+}
+void DesligaPrograma(){
+    DesenhaLinha();
+    printf("Fim do Programa. Desligando...");
+    sleep(1);
+    exit(0);
+
+}
 
 int INVERTE(unsigned int num){
 

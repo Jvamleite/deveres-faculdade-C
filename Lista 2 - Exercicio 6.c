@@ -1,67 +1,74 @@
 #include <stdio.h>
-#include <locale.h>
 #include <stdlib.h>
 #include <time.h>
 #define TRUE 1
 #define FALSE 0
 
-int verifica_chute(int x, int y);
+void DesenhaLinha();
+void DesligaPrograma();
+int VerificaChute(int x, int y);
 int main (){
 
-    //Declara o português como língua padrão do programa
-    setlocale(LC_ALL,"Portuguese");
+    int numeroSorteado, chuteUsuario, resultado, numeroDeTentativas = 0;
 
-    int numero_sorteado, chute_usuario, resultado, numero_de_tentativas = 0;
+    //Titulo do programa
+    DesenhaLinha();
+    printf("\tLista 2 - Exercicio 6\n");
+    DesenhaLinha();
+    printf("\n\n");
 
-    printf("\tLista 2 - Exercício 6\n\n");
-
-    //Iniciando o gerador de números aleatórios
+    //Iniciando o gerador de numeros aleatarios
     srand(time(NULL));
 
-    //Sorteio do número pelo programa
-    printf("Sorteando Número...\n");
+    //Sorteio do numero pelo programa
+    printf("Sorteando Numero...\n");
     sleep(1);
-    numero_sorteado = rand() % 100;
-    printf("Número Sorteado!\n");
+    numeroSorteado = rand() % 100;
+    printf("Numero Sorteado!\n");
 
-    //Recebe e verifica se o chute do usuário corresponde ao numero sorteado, se é menor ou se é maior
+    //Recebe e verifica se o chute do usuario corresponde ao numero sorteado, se eh menor ou se eh maior
     do{
-        printf("Qual é seu chute?: ");
-        scanf("%d",&chute_usuario);
-        numero_de_tentativas++;
-        resultado = verifica_chute(chute_usuario,numero_sorteado);
+        printf("Qual eh seu chute?: ");
+        scanf(" %d",&chuteUsuario);
+        numeroDeTentativas++;
+        resultado = VerificaChute(chuteUsuario,numeroSorteado);
     } while (resultado == FALSE);
 
-    printf("Parabéns você acertou!!\n");
-    printf("Você precisou de %d chutes para acertar", numero_de_tentativas);
+    DesenhaLinha();
+    printf("Parabens voce acertou!!\n");
+    printf("Voce precisou de %d chutes para acertar\n", numeroDeTentativas);
 
-
-
-
-
-
-
-
-
-
-
+    DesligaPrograma();
 
 };
 
-int verifica_chute(int x, int y){
+int VerificaChute(int x, int y){
 
-    //Compara o chute do usuário com a letra sorteada usando o código ACSII dos dois
+    //Compara o chute do usuario com a letra sorteada usando o codigo ACSII dos dois
 
 
     if (x < y){
-        printf("Errou! Número menor que o sorteado, tente novamente\n");
+        printf("Errou! Numero menor que o sorteado, tente novamente\n");
         return FALSE;
     }
     else if (x > y){
-        printf("Errou! Número maior que o sorteado, tente novamente\n");
+        printf("Errou! Numero maior que o sorteado, tente novamente\n");
         return FALSE;
     }
     else
         return TRUE;
 
-};
+}
+void DesenhaLinha(){
+
+printf("====================================\n");
+
+}
+void DesligaPrograma(){
+    DesenhaLinha();
+    printf("Fim do Programa. Desligando...");
+    sleep(1);
+    exit(0);
+
+}
+

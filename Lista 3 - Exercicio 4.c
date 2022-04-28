@@ -1,33 +1,48 @@
 #include <stdio.h>
-#include <locale.h>
+#include <stdlib.h>
 #define TRUE 1
 #define FALSE 0
 
-
+void DesenhaLinha();
+void DesligaPrograma();
 int divs(int x, int *pmi, int *pma);
 int main (){
 
-    //Declara o português como lingua padrão pro programa
-    setlocale(LC_ALL,"Portuguese");
-
     int n, min , max, resultado;
 
-    printf("\tLista 3 - Exercício 4\n\n");
+    //Titulo do programa
+    DesenhaLinha();
+    printf("\tLista 3 - Exercicio 4\n");
+    DesenhaLinha();
+    printf("\n\n");
 
-    printf("Digite um número inteiro: ");
-    scanf("%d", &n);
+    printf("Digite um numero inteiro: ");
+    scanf(" %d", &n);
 
     resultado = divs(n,&min,&max);
 
     if (resultado == TRUE)
-        printf("%d é primo!", n);
+        printf("%d eh primo!", n);
     else{
-        printf("%d não é primo!\n", n);
-        printf("%d é seu maior divisor e %d é seu menor divisor.\n", max,min);
+        printf("%d nao eh primo!\n", n);
+        printf("%d eh seu maior divisor e %d eh seu menor divisor.\n", max,min);
     }
 
+    DesligaPrograma();
 
-};
+}
+void DesenhaLinha(){
+
+printf("====================================\n");
+
+}
+void DesligaPrograma(){
+    DesenhaLinha();
+    printf("Fim do Programa. Desligando...");
+    sleep(1);
+    exit(0);
+
+}
 
 int divs(int x, int *pmi, int *pma){
 

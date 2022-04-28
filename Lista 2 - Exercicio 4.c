@@ -1,57 +1,63 @@
 #include <stdio.h>
-#include <locale.h>
 #include <stdlib.h>
 #include <time.h>
 #define TRUE 1
 #define FALSE 0
 
-int verifica_chute(char x, char y);
+void DesenhaLinha();
+void DesligaPrograma();
+int VerificaChute(char x, char y);
 int main (){
 
-    //Declara o português como língua padrão do programa
-    setlocale(LC_ALL,"Portuguese");
-
-
-    char chute_usuario, letra_sorteada;
+    char chuteUsuario, letraSorteada;
     int resultado;
 
-    printf("\tLista 2 - Exercício 4\n\n");
+    //Titulo do programa
+    DesenhaLinha();
+    printf("\tLista 2 - Exercicio 4\n");
+    DesenhaLinha();
+    printf("\n\n");
 
-    //Iniciando o gerador de números aleatórios
+    //Iniciando o gerador de numeros aleatorios
     srand(time(NULL));
 
     //Sorteio da letra pelo programa
     printf("Sorteando Letra...\n");
     sleep(1);
-    letra_sorteada = (char)((rand()%26)+97);
+    letraSorteada = (char)((rand()%26)+97);
     printf("Letra Sorteada!\n");
 
-    //Recebe e verifica se o chute do usuário corresponde a letra sorteado, se é menor ou se é maior
+    //Recebe e verifica se o chute do usuario corresponde a letra sorteado, se eh menor ou se eh maior
     do{
-        printf("Qual é seu chute?: ");
-        scanf("%c",&chute_usuario);
+        printf("Qual eh seu chute?: ");
+        scanf(" %c",&chuteUsuario);
+        chuteUsuario = tolower(chuteUsuario);
         fflush(stdin);
-        resultado = verifica_chute(chute_usuario,letra_sorteada);
+        resultado = VerificaChute(chuteUsuario,letraSorteada);
     } while (resultado == FALSE);
 
-    printf("Parabéns você acertou!!");
+    DesenhaLinha();
+    printf("   Parabens voce acertou!!\n");
 
+    DesligaPrograma();
 
+}
+void DesenhaLinha(){
 
+printf("====================================\n");
 
+}
+void DesligaPrograma(){
+    DesenhaLinha();
+    printf("Fim do Programa. Desligando...");
+    sleep(1);
+    exit(0);
 
+}
 
+int VerificaChute(char x, char y){
 
-
-
-
-
-
-};
-
-int verifica_chute(char x, char y){
-
-    //Compara o chute do usuário com a letra sorteada usando o código ACSII dos dois
+    //Compara o chute do usuario com a letra sorteada usando o cï¿½digo ACSII dos dois
 
     if (((int)x) < ((int)y)){
         printf("Errou! Letra menor que a sorteada, tente novamente\n");

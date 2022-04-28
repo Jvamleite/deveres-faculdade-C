@@ -1,22 +1,39 @@
 #include <stdio.h>
-#include <locale.h>
 #include <math.h>
+#include <stdlib.h>
 
-
+void DesenhaLinha();
+void DesligaPrograma(); 
 int main (){
-
-    //Declara o português como lingua padrão pro programa
-    setlocale(LC_ALL,"Portuguese");
 
     float numero;
 
-    printf("\tLista 1 - Exercício 7\n\n");
+    //Titulo do programa
+    DesenhaLinha();
+    printf("\tLista 1 - Exercicio 7\n");
+    DesenhaLinha();
+    printf("\n\n");
 
-    printf("Digite um número real: ");
-    scanf("%f", &numero);
+    printf("Digite um numero real: ");
+    scanf(" %f", &numero);
 
     //Arredonda para cima e para baixo o valor dado
-    printf("\nArredondando para cima %4f fica %.0f\n", numero, ceil(numero));
+    DesenhaLinha();
+    printf("Arredondando para cima %4f fica %.0f\n", numero, ceil(numero));
     printf("Arredondando para baixo %4f fica %.0f\n", numero, floor(numero));
 
-};
+    DesligaPrograma();
+
+}
+void DesenhaLinha(){
+
+printf("====================================\n");
+
+}
+void DesligaPrograma(){
+    DesenhaLinha();
+    printf("Fim do Programa. Desligando...");
+    sleep(1);
+    exit(0);
+
+}

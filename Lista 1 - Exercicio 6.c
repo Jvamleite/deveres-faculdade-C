@@ -1,27 +1,33 @@
 #include <stdio.h>
-#include <locale.h>
+#include <stdlib.h>
 #include <math.h>
-#define calcula_delta(a,b,c) (((b)*(b)) - (4*(a)*(c)))
+#define CALCULADELTA(a,b,c) (((b)*(b)) - (4*(a)*(c)))
 
 void calcula_raizes(float a, float b, float c);
+void DesenhaLinha();
+void DesligaPrograma();
 int main (){
-
-    //Declara o português como lingua padrão pro programa
-    setlocale(LC_ALL,"Portuguese");
 
     float a, b, c, delta;
 
-    printf("\tLista 1 - Exercício 6\n\n");
+    //Titulo do programa
+    DesenhaLinha();
+    printf("\tLista 1 - Exercicio 6\n");
+    DesenhaLinha();
+    printf("\n\n");
 
-    printf("Digite os coeficientes da equação: \n\n");
+    printf("Digite os coeficientes da equacao: \n\n");
     printf("a: ");
-    scanf("%f",&a);
+    scanf(" %f",&a);
     printf("b: ");
-    scanf("%f",&b);
+    scanf(" %f",&b);
     printf("c: ");
-    scanf("%f",&c);
+    scanf(" %f",&c);
 
+    DesenhaLinha();
     calcula_raizes(a,b,c);
+
+    DesligaPrograma();
 
     return 0;
 };
@@ -30,19 +36,31 @@ void calcula_raizes(float a, float b, float c){
 
     float delta, x1, x2;
 
-    delta = calcula_delta(a,b,c);
+    delta = CALCULADELTA(a,b,c);
 
     if (delta < 0)
-        printf("A equação não possui raizes reais\n");
+        printf("A equacao nao possui raizes reais\n");
     else if (delta == 0){
         x1 = (-1*(b))/(2*a);
-        printf("A única raiz real dessa equação é: %f\n", x1);
+        printf("A unica raiz real dessa equacao eh: %f\n", x1);
     }
     else{
         x1 = ((-1*b) + sqrt(delta))/(2*a);
         x2 = ((-1*b) - sqrt(delta))/(2*a);
-        printf("As duas raízes reais da equação são %2.2f e %2.2f\n", x1, x2);
+        printf("As duas raizes reais da equacao sao %2.2f e %2.2f\n", x1, x2);
     }
-};
+}
+void DesenhaLinha(){
+
+printf("====================================\n");
+
+}
+void DesligaPrograma(){
+    DesenhaLinha();
+    printf("Fim do Programa. Desligando...");
+    sleep(1);
+    exit(0);
+
+}
 
 

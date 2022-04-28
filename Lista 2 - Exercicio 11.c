@@ -1,35 +1,43 @@
 #include <stdio.h>
-#include <locale.h>
+#include <stdlib.h>
 #include <math.h>
 
+void DesenhaLinha();
+void DesligaPrograma();
 int main (){
-
-	//Declara o português como lingua padrão pro programa
-	setlocale(LC_ALL,"Portuguese");
 
 	int base, expoente, resultado;
 
-	printf("\tLista 2 - Exercício 11\n\n");
+	//Titulo do programa
+    DesenhaLinha();
+    printf("\tLista 2 - Exercicio 11\n");
+    DesenhaLinha();
+    printf("\n\n");
 
-    printf("Digite um número inteiro para a base: ");
+    printf("Digite um numero inteiro para a base: ");
     scanf("%d", &base);
 
-    printf("\nDigite um número inteiro para o expoente: ");
+    printf("\nDigite um numero inteiro para o expoente: ");
     scanf("%d", &expoente);
 
     resultado = pow(base, expoente);
 
-    printf("\n%d^%d = %d", base, expoente, resultado);
+    DesenhaLinha();
+    printf("\n%d^%d = %d\n", base, expoente, resultado);
 
-
-
-
-
-
-
-
-
-
+    DesligaPrograma();
 
 	return 0;
+}
+void DesenhaLinha(){
+
+printf("====================================\n");
+
+}
+void DesligaPrograma(){
+    DesenhaLinha();
+    printf("Fim do Programa. Desligando...");
+    sleep(1);
+    exit(0);
+
 }

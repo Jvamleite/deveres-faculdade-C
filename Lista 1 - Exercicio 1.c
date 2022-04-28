@@ -1,28 +1,29 @@
 #include <stdio.h>
-#include <locale.h>
 
 void DesenhaLinha();
+void DesligaPrograma();
 int main (){
-
-    //Determina o portugu�s como lingua padr�o pro programa
-    setlocale(LC_ALL,"Portuguese");
 
     int total, horas, minutos, segundos, aux;
 
-    printf("\tLista 1 - Exerc�cio 1\n\n");
+    //Titulo do programa
+    DesenhaLinha();
+    printf("\t\t\tLista 1 - Exercicio 1\n");
+    DesenhaLinha();
+    printf("\n\n");
 
-    //Verifica se o valor � v�lido
+    //Verifica se o valor é válido
     while(1){
-        printf("Digite o total de segundos: ");
-        scanf("%d",&total);
+        printf("\n\nDigite o total de segundos: ");
+        scanf(" %d",&total);
         if (total < 0)
-            printf("Digite um n�mero v�lido!\n");
+            printf("Digite um numero valido!\n");
         else
             break;
     }
     aux = total;
 
-    //Decomp�em o total de segundos em horas, minutos e segundos
+    //Decompoem o total de segundos em horas, minutos e segundos
     if (total > 60){
         horas = total/3600;
         total -= horas*3600;
@@ -33,13 +34,24 @@ int main (){
 
     DesenhaLinha();
 
-    printf("\n%d segundos � equivalente a: %d Hora(s) %d Minuto(s) %d Segundo(s)\n",aux, horas, minutos, segundos);
+    printf("%d segundos eh equivalente a: %d Hora(s) %d Minuto(s) %d Segundo(s)\n",aux, horas, minutos, segundos);
+
+    DesenhaLinha();
+
+    DesligaPrograma();
 
     return 0;
 
 };
 void DesenhaLinha(){
 
-    printf("====================================================================")
+    printf("===================================================================\n");
 
-};
+}
+void DesligaPrograma(){
+    DesenhaLinha();
+    printf("Fim do Programa. Desligando...");
+    sleep(1);
+    exit(0);
+
+}

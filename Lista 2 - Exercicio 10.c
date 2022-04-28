@@ -1,26 +1,43 @@
 #include <stdio.h>
-#include <locale.h>
+#include <stdlib.h>
 
+void DesenhaLinha();
+void DesligaPrograma();
 int mdc (int x, int y);
 int main (){
 
-	//Declara o português como lingua padrão pro programa
-	setlocale(LC_ALL,"Portuguese");
-
     int num1, num2,MDC;
 
-	printf("\tLista 2 - Exercício 10\n\n");
+	//Titulo do programa
+    DesenhaLinha();
+    printf("\tLista 2 - Exercicio 10\n");
+    DesenhaLinha();
+    printf("\n\n");
 
-    printf("Digite dois números inteiros: ");
-    scanf("%d %d",&num1,&num2);
+    printf("Digite dois numeros inteiros: ");
+    scanf(" %d %d",&num1,&num2);
 
     MDC = mdc(num1,num2);
 
-    printf("O MDC entre %d e %d é %d", num1, num2, MDC);
+    DesenhaLinha();
+    printf("O MDC entre %d e %d eh %d\n", num1, num2, MDC);
+
+    DesligaPrograma();
 
 	return 0;
 };
+void DesenhaLinha(){
 
+printf("====================================\n");
+
+}
+void DesligaPrograma(){
+    DesenhaLinha();
+    printf("Fim do Programa. Desligando...");
+    sleep(1);
+    exit(0);
+
+}
 
 int mdc (int x, int y){
 

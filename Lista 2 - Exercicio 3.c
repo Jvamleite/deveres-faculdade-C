@@ -1,34 +1,52 @@
 #include <stdio.h>
-#include <locale.h>
+#include <stdlib.h>
 
+void DesenhaLinha();
+void DesligaPrograma();
 int sequencia_fib(int x);
 int main (){
-
-    //Declara o português como lingua padrão pro programa
-    setlocale(LC_ALL,"Portuguese");
 
     int n;
     register int cnt = 1;
 
-    printf("\tLista 2 - Exercício 2\n\n");
+    //Titulo do programa
+    DesenhaLinha();
+    printf("\tLista 2 - Exercicio 3\n");
+    DesenhaLinha();
+    printf("\n\n");
 
-    printf("Digite o número de termos da sequência de fibonacci que deseja imprimir: ");
-    scanf("%d",&n);
+    printf("Digite o numero de termos da sequencia de fibonacci que deseja imprimir: ");
+    scanf(" %d",&n);
 
     //Imprime os n primeiros termos da sequencia de fibonacci
-    printf("Os %d primeiros números da sequência de fibonacci são: ", n);
+    DesenhaLinha();
+    printf("Os %d primeiros numeros da sequencia de fibonacci sao: ", n);
     for(cnt = 1; cnt<=n; cnt++)
         printf("%d ", sequencia_fib(cnt));
     printf("\n");
 
+    DesligaPrograma();
 
     return 0;
 
-};
+}
+void DesenhaLinha(){
+
+printf("====================================\n");
+
+}
+void DesligaPrograma(){
+    DesenhaLinha();
+    printf("Fim do Programa. Desligando...");
+    sleep(1);
+    exit(0);
+
+}
+
 
 int sequencia_fib (int x){
 
-    //Usa da recursividade para retornar determinado n termo da sequência de fibonacci
+    //Usa da recursividade para retornar determinado n termo da sequï¿½ncia de fibonacci
 
     if (x == 1)
         return 1;
@@ -37,4 +55,4 @@ int sequencia_fib (int x){
     else
         return (sequencia_fib(x-1) + sequencia_fib(x-2));
 
-};
+}
