@@ -33,7 +33,7 @@ int main (){
     media = calcula_media(notas);
 
     DesenhaLinha();
-    //Verifica a situacaoo do aluno
+    //Verifica a situacao do aluno
     if (media>=6.0)
         printf("Parabens voce foi aprovado!\nMedia Final: %.2lf\n", media);
     else if (media>=4.0 && media<6.0)

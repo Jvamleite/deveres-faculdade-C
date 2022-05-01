@@ -4,7 +4,7 @@ void DesenhaLinha();
 void DesligaPrograma();
 int main (){
 
-    int total, horas, minutos, segundos, aux;
+    int total, horas = 0, minutos = 0, segundos, aux;
 
     //Titulo do programa
     DesenhaLinha();
@@ -35,8 +35,6 @@ int main (){
     DesenhaLinha();
 
     printf("%d segundos eh equivalente a: %d Hora(s) %d Minuto(s) %d Segundo(s)\n",aux, horas, minutos, segundos);
-
-    DesenhaLinha();
 
     DesligaPrograma();
 

@@ -17,8 +17,12 @@ int main(){
     DesenhaLinha();
     printf("\n\n");
 
-    printf("Digite um valor para o raio: ");
-    scanf("%f",&r);
+    do{
+        printf("Digite um valor para o raio: ");
+        scanf(" %f",&r);
+        if (r <= 0)
+            printf("Digite um valor valido!");
+    } while(r <=0 );
 
     calc_circulo(r,&circunferencia,&area);
 

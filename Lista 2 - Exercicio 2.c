@@ -13,7 +13,11 @@ int main (){
     printf("\n\n");
 
     printf("Quantos numeros devem ser somados: ");
-    scanf(" %d",&n);
+    do {
+        scanf(" %d",&n);
+        if (n <= 0)
+            printf("\nDigite um valor valido!: ");
+    } while (n <= 0);
 
     //Soma apenas os numeros impares
     while(cnt!=n){
@@ -25,7 +29,7 @@ int main (){
     }
 
     DesenhaLinha();
-    printf("\nA soma dos %d primeiros numeros primos eh: %d \n", n, soma);
+    printf("A soma dos %d primeiros numeros primos eh: %d \n", n, soma);
 
     DesligaPrograma();
 

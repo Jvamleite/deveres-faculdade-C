@@ -32,9 +32,13 @@ int main (){
         printf("Qual eh seu chute?: ");
         scanf(" %c",&chuteUsuario);
         chuteUsuario = tolower(chuteUsuario);
+        if (chuteUsuario < 97 || chuteUsuario > 122 ){
+            printf("Digite um caractere valido (a-z)\n");
+            continue;
+        }
         fflush(stdin);
         resultado = VerificaChute(chuteUsuario,letraSorteada);
-    } while (resultado == FALSE);
+    } while (resultado != TRUE);
 
     DesenhaLinha();
     printf("   Parabens voce acertou!!\n");

@@ -18,7 +18,11 @@ int main (){
 
     printf("Digite os coeficientes da equacao: \n\n");
     printf("a: ");
-    scanf(" %f",&a);
+    do{
+        scanf(" %f",&a);
+        if (a == 0)
+            printf("Digite um valor válido para a!: ");
+    } while (a==0);
     printf("b: ");
     scanf(" %f",&b);
     printf("c: ");

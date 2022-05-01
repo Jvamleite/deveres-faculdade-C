@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
 #define TRUE 1
 #define FALSE 0
 
@@ -17,7 +18,7 @@ int main (){
     printf("Digite um numero inteiro: ");
     scanf(" %d", &numero);
 
-    if (numero == 1){
+    if (numero == 1 || numero == 0){
         DesenhaLinha();
         printf("NUMERO NAO PRIMO\n");
     }
@@ -58,6 +59,12 @@ int VerificaPrimo(int num){
 
     int divisores = 0;
     register int cnt = 1;
+
+    //Fiquei na duvida na existencia de numeros primos negativos ou não, já que as quando aprendi numeros
+    //primos sempre me foi dito que numeros primos são numeros que possuem apenas dois divisores, não atoa
+    //usei essa mesmo logica no código abaixo, porém algumas bibliografias que eu consultei apontaram que o 
+    //inverso de um número primo tambem é primo, pra contemplar essa definição eu considerei o absoluto do número
+    num = abs(num);
 
     for(cnt = 1; cnt<=num; cnt++){
             if (num % cnt == 0)

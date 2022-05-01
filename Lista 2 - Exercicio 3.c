@@ -16,7 +16,11 @@ int main (){
     printf("\n\n");
 
     printf("Digite o numero de termos da sequencia de fibonacci que deseja imprimir: ");
-    scanf(" %d",&n);
+    do {
+        scanf(" %d",&n);
+        if (n <= 0)
+            printf("\nDigite um valor valido!: ");
+    } while (n <= 0);
 
     //Imprime os n primeiros termos da sequencia de fibonacci
     DesenhaLinha();

@@ -13,10 +13,18 @@ int main () {
     DesenhaLinha();
     printf("\n\n");
 
+    do {
     printf("Digite a quantidade de horas trabalhadas essa semana: ");
     scanf("%lf",&numeroDeHoras);
+    if (numeroDeHoras <= 0){
+        printf("Digite um valor valido!");
+        continue;
+    }
     printf("Digite o valor da sua hora: R$ ");
     scanf("%lf", &valorDaHora);
+    if (valorDaHora <= 0)
+        printf("Digite um valor valido!");
+    } while(numeroDeHoras <= 0 || valorDaHora <= 0 );
 
     //Altera o valor do bonus
     if (numeroDeHoras > 40 && numeroDeHoras <= 60 )

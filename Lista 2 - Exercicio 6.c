@@ -30,9 +30,13 @@ int main (){
     do{
         printf("Qual eh seu chute?: ");
         scanf(" %d",&chuteUsuario);
+        if (chuteUsuario < 0 || chuteUsuario > 100){
+            printf("Digite um número válido(0-99)!");
+            continue;
+        }
         numeroDeTentativas++;
         resultado = VerificaChute(chuteUsuario,numeroSorteado);
-    } while (resultado == FALSE);
+    } while (resultado != TRUE);
 
     DesenhaLinha();
     printf("Parabens voce acertou!!\n");

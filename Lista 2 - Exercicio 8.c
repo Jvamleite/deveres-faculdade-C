@@ -8,7 +8,7 @@ void DesligaPrograma();
 int main (){
 
     int primeiraDezena, segundaDezena, somaDasDezenas;
-    register int cnt = 1000;
+    register int cnt = MIN;
 
     //Titulo do programa
     DesenhaLinha();
