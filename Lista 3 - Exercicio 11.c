@@ -4,12 +4,13 @@
 
 void DesenhaLinha();
 void DesligaPrograma();
+float CalculoVariancia(int *idades, float media, int Np);
 int main (){
 
 
     int *listaIdade, quantidadeMulheres = 0, quantidadeHomens = 0, numeroDePessoas, somaIdades = 0;
     char sexo;
-    float altura, mediaIdades, somatorio = 0, varianciaIdades;
+    float altura, mediaIdades, varianciaIdades;
     register int cnt = 0;
 
     //Titulo do programa
@@ -39,16 +40,11 @@ int main (){
     }
 
     mediaIdades = somaIdades/numeroDePessoas;
+    varianciaIdades = CalculoVariancia(listaIdade,mediaIdades,numeroDePessoas);
 
-    cnt = 0;
-    for(cnt = 0; cnt < numeroDePessoas; cnt++){
-        somatorio += pow((listaIdade[cnt]-mediaIdades),2);
-    }
-    varianciaIdades = somatorio/numeroDePessoas;
-
-    printf("%d %d", quantidadeHomens, quantidadeMulheres);
-
-    printf("%f",varianciaIdades);
+    printf("A quantidade de homens maiores que 1.8 eh: %d", quantidadeHomens);
+    printf("A quantidade de mulheres com idade entre 20 e 35 eh: %d", quantidadeMulheres);
+    printf("A variancia das idades eh: %f",varianciaIdades);
 
     return 0;
 }
@@ -63,4 +59,16 @@ void DesligaPrograma(){
     sleep(1);
     exit(0);
 
+}
+float CalculoVariancia(int *idades, float media, int Np){
+
+    register int cnt = 0;
+    float variancia, somatorio = 0;
+
+    for(cnt = 0; cnt < Np; cnt++){
+        somatorio += pow((idades[cnt]-media),2);
+    }
+    variancia = somatorio/Np;
+
+    return variancia;
 }
