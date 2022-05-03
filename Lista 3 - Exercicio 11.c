@@ -18,16 +18,20 @@ int main (){
     DesenhaLinha();
     printf("\n\n");
 
+    printf("Digite o número de pessoas: ");
     scanf(" %d",&numeroDePessoas);
 
     listaIdade = (int *) malloc (numeroDePessoas*sizeof(int));
 
     for (cnt = 0; cnt < numeroDePessoas; cnt++){
+        printf("\nDigite o sexo da pessoa: ");
         scanf(" %c",&sexo);
+        printf("\nDigite a idade da pessoa: ");
         scanf(" %d",&listaIdade[cnt]);
         somaIdades += listaIdade[cnt];
         if ((listaIdade[cnt] >= 20 && listaIdade[cnt] <= 35) && sexo == 'F')
             quantidadeMulheres++;
+        printf("Digite a altura da pessoa: ");
         scanf(" %f",&altura);
         if ((altura > 1.8) && sexo == 'M')
             quantidadeHomens++;
@@ -35,18 +39,16 @@ int main (){
     }
 
     mediaIdades = somaIdades/numeroDePessoas;
+
     cnt = 0;
     for(cnt = 0; cnt < numeroDePessoas; cnt++){
         somatorio += pow((listaIdade[cnt]-mediaIdades),2);
     }
-
     varianciaIdades = somatorio/numeroDePessoas;
 
     printf("%d %d", quantidadeHomens, quantidadeMulheres);
 
     printf("%f",varianciaIdades);
-
-
 
     return 0;
 }
