@@ -27,23 +27,31 @@ int main (){
     for (cnt = 0; cnt < numeroDePessoas; cnt++){
         printf("\nDigite o sexo da pessoa: ");
         scanf(" %c",&sexo);
-        printf("\nDigite a idade da pessoa: ");
+        do {
+        printf("Digite a idade da pessoa: ");
         scanf(" %d",&listaIdade[cnt]);
+            if (listaIdade[cnt] > 120 || listaIdade[cnt] < 1)
+                printf("Digite uma idade valida!\n");
+        } while (listaIdade[cnt] > 120 || listaIdade[cnt] < 1);
         somaIdades += listaIdade[cnt];
         if ((listaIdade[cnt] >= 20 && listaIdade[cnt] <= 35) && sexo == 'F')
             quantidadeMulheres++;
-        printf("Digite a altura da pessoa: ");
-        scanf(" %f",&altura);
-        if ((altura > 1.8) && sexo == 'M')
-            quantidadeHomens++;
+        do {
+            printf("Digite a altura da pessoa: ");
+            scanf(" %f",&altura);
+            if (altura <= 1.40 || altura >= 2.20)
+                printf("Digite uma altura valida!\n");
+        } while(altura <= 1.40 || altura >= 2.20);
+            if ((altura > 1.8) && sexo == 'M')
+                quantidadeHomens++;
         fflush(stdin);
     }
 
     mediaIdades = somaIdades/numeroDePessoas;
     varianciaIdades = CalculoVariancia(listaIdade,mediaIdades,numeroDePessoas);
 
-    printf("A quantidade de homens maiores que 1.8 eh: %d", quantidadeHomens);
-    printf("A quantidade de mulheres com idade entre 20 e 35 eh: %d", quantidadeMulheres);
+    printf("A quantidade de homens maiores que 1.8 eh: %d\n", quantidadeHomens);
+    printf("A quantidade de mulheres com idade entre 20 e 35 eh: %d\n", quantidadeMulheres);
     printf("A variancia das idades eh: %f",varianciaIdades);
 
     return 0;
