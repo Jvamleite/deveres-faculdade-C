@@ -50,6 +50,8 @@ int main (){
     mediaIdades = somaIdades/numeroDePessoas;
     varianciaIdades = CalculoVariancia(listaIdade,mediaIdades,numeroDePessoas);
 
+    free(listaIdade);
+
     printf("A quantidade de homens maiores que 1.8 eh: %d\n", quantidadeHomens);
     printf("A quantidade de mulheres com idade entre 20 e 35 eh: %d\n", quantidadeMulheres);
     printf("A variancia das idades eh: %f",varianciaIdades);
