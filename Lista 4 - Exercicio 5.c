@@ -17,8 +17,12 @@ int main (){
     DesenhaLinha();
     printf("\n\n");
 
-    printf("Digite a distancia percorrida pelo taxi: ");
-    scanf("%f",&dist);
+    do{
+        printf("Digite a distancia percorrida pelo taxi: ");
+        scanf("%f",&dist);
+        if (dist <=0)
+            printf("Digite uma distancia valida!\n");
+    } while (dist<=0);
 
     calcula_corrida(dist,&valorCorridaB1,&valorCorridabB2);
 
