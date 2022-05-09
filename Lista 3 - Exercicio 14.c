@@ -69,9 +69,10 @@ void PreencheListas(int opn[MAX], int idades[MAX]){
     //Professor eu tentei de todas as formas trabalhar com as strings otimo, bom, regular e etc 
     //Mas mesmo conseguindo preencher com 100 strings a matriz, quando eu tentava compara (mesmo a funcao strcmp)
     //Dava errado, ou ele contava a mais ou a menos, ou simplesmente não contava alguma string
-    //Pra entregar pelo menos a funcionalidade eu associei os números a cada resposta pra resolver meu problema
+    //Pra entregar pelo menos a funcionalidade eu associei números a cada resposta pra resolver meu problema
 
     register int cnt = 0;
+    // 5 == otimo, 4 == bom, 3 == regular, 2 == ruim, 1 == pessimo
     int possiveisOpnioes[5] = {5,4,3,2,1};
 
 
