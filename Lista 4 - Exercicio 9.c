@@ -18,8 +18,14 @@ int main (){
     DesenhaLinha();
     printf("\n\n");
 
+
     for(cnt = 0; cnt < TAMANHO; cnt++){
         scanf("%d",&vetorDeInteiros[cnt]);
+    }
+
+    cnt = 0;
+    for(cnt = 0; cnt < TAMANHO; cnt++){
+        printf("%dº posicao: %d",cnt+1,vetorDeInteiros[cnt]);
     }
 
     
