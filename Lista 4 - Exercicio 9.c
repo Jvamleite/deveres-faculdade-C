@@ -5,10 +5,13 @@
 void DesenhaLinha();
 void DesligaPrograma();
 void PreencheVetor(int *vetor);
+void ImprimeListaVetores(int *vetor);
+int EncontraValorNaLista(int valor, int *lista);
+void TrocaValores(int *vetor);
 int main (){
 
 
-    int vetorDeInteiros[TAMANHO], valorProcurado, vetorCopia[TAMANHO];
+    int vetorDeInteiros[TAMANHO], valorProcurado, resultado;
     register int cnt = 0;
 
 
@@ -20,31 +23,30 @@ int main (){
 
     PreencheVetor(vetorDeInteiros);
 
-    cnt = 0;
-    for(cnt = 0; cnt < TAMANHO; cnt++){
-        printf("posicao %d: %d\n",cnt+1,vetorDeInteiros[cnt]);
-    }
+    DesenhaLinha();
+    ImprimeListaVetores(vetorDeInteiros);
+    DesenhaLinha();
 
+    printf("Digite o valor que deseja procurar no vetor: ");
     scanf("%d",&valorProcurado);
+
+    resultado = EncontraValorNaLista(valorProcurado,vetorDeInteiros);
+    DesenhaLinha();
+    if (resultado == -1)
+        printf("Valor nao existe no vetor!\n");
+    else{
+        printf("Valor encontrado!\n");
+        printf("O valor procurado esta na posicao %d\n",resultado);
+    }
+    DesenhaLinha();
+
+    TrocaValores(vetorDeInteiros);
+
+    printf("Vetor com valores trocados: ");
     for(cnt = 0; cnt < TAMANHO; cnt++){
-        if (valorProcurado == vetorDeInteiros[cnt]){
-            printf("Valor encontrado!\n");
-            printf("O valor procurado está na posicao %d\n",cnt+1);
-        }
+        printf("%d ",vetorDeInteiros[cnt]);
     }
 
-    cnt = 0;
-    for(cnt = 0; cnt < TAMANHO; cnt++){
-        vetorCopia[cnt] = vetorDeInteiros[cnt];
-    }
-
-    cnt = 0;
-    for(cnt = 0; cnt < TAMANHO; cnt++){
-        vetorDeInteiros[cnt+1] = vetorCopia[cnt] + vetorCopia[cnt+1];
-        vetorCopia[cnt+1] = vetorDeInteiros[cnt+1];   
-    }
-
-    
 
 }
 void DesenhaLinha(){
@@ -64,7 +66,46 @@ void PreencheVetor(int *vetor){
     register int cnt = 0;
 
     for(cnt = 0; cnt < TAMANHO; cnt++){
+        printf("Digite o %d valor: ",cnt+1);
         scanf("%d",&vetor[cnt]);
     }
+}
+void ImprimeListaVetores(int *vetor){
+
+    register int cnt = 0;
+
+    for(cnt = 0; cnt < TAMANHO; cnt++){
+        printf("posicao %d: %d\n",cnt+1,vetor[cnt]);
+    }
+}
+int EncontraValorNaLista(int valor, int *lista){
+
+    register int cnt = 0;
+
+    for(cnt = 0; cnt < TAMANHO; cnt++){
+        if (valor == lista[cnt]){
+            return cnt+1;
+        }
+    }
+
+    return -1;
+
+}
+void TrocaValores(int *vetor){
+
+
+    int vetorCopia[TAMANHO];
+    register int cnt = 0, cnt2 = 0;
+
+    for(cnt = 0; cnt < TAMANHO; cnt++){
+        vetorCopia[cnt] = vetor[cnt];
+    }
+
+    for(cnt2 = 0; cnt2 < TAMANHO; cnt2++){
+        vetor[cnt2+1] = vetorCopia[cnt2] + vetorCopia[cnt2+1];
+        vetorCopia[cnt2+1] = vetor[cnt2+1];   
+    }
+
+
 }
 
