@@ -1,12 +1,15 @@
 #include <stdio.h>
 #include <stdlib.h>
+#define TAMANHO 7
+
 
 void DesenhaLinha();
 void DesligaPrograma();
 int main (){
 
 
-    
+    int vetorDeInteiros[TAMANHO];
+    register int cnt = 0;
 
 
     //Titulo do programa
@@ -15,9 +18,11 @@ int main (){
     DesenhaLinha();
     printf("\n\n");
 
+    for(cnt = 0; cnt < TAMANHO; cnt++){
+        scanf("%d",&vetorDeInteiros[cnt]);
+    }
+
     
-
-
 
 }
 
