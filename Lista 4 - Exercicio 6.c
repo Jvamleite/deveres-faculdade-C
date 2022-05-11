@@ -19,7 +19,7 @@ int main (){
     DesenhaLinha();
     printf("\n\n");
 
-
+    printf("Digite a parte local do seu email: ");
     scanf("%s",&recebeString);
     
     tamanhoDaString = VerificaTamanhoString(recebeString);
@@ -30,12 +30,13 @@ int main (){
 
     resultado = valida_mail(parteLocal);
 
+    DesenhaLinha();
     if(resultado == -1)
-        printf("Parte local invalida!");
+        printf("Parte local invalida!\n");
     else
-        printf("Parte local valida");
+        printf("Parte local valida!\n");
 
-
+    DesligaPrograma();
 
     return 0;
 }
