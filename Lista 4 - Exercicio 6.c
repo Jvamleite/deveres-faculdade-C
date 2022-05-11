@@ -4,11 +4,13 @@
 #define MAX 64
 
 
+int VerificaTamanhoString(char *str);
+void CopiaStringParaParteLocal(char *str, char *PL, int TamStr);
 int valida_mail(char *s);
 int main (){
 
     char *parteLocal, recebeString[MAX];
-    int resultado, tamanhoString = 0;
+    int resultado, tamanhoDaString = 0;
     register int cnt = 0;
 
     //Titulo do programa
@@ -20,17 +22,11 @@ int main (){
 
     scanf("%s",&recebeString);
     
-    for(cnt = 0; cnt < MAX; cnt++){
-        if(recebeString[cnt] == '\0')
-            break;
-        tamanhoString++;
-    }
+    tamanhoDaString = VerificaTamanhoString(recebeString);
 
-    parteLocal = (char *) malloc (tamanhoString*sizeof(char));
+    parteLocal = (char *) malloc (tamanhoDaString*sizeof(char));
 
-    for(cnt = 0; cnt < tamanhoString; cnt++){
-        parteLocal[cnt] = recebeString[cnt];
-    }
+    CopiaStringParaParteLocal(recebeString,parteLocal,tamanhoDaString);
 
     resultado = valida_mail(parteLocal);
 
@@ -55,32 +51,54 @@ void DesligaPrograma(){
     exit(0);
 
 }
+int VerificaTamanhoString(char *str){
+
+    register int cnt = 0;
+    int tamStr= 0;
+
+    for(cnt = 0; cnt < MAX; cnt++){
+        if(str[cnt] == '\0')
+            break;
+        tamStr++;
+    }
+
+    return tamStr;
+}
+void CopiaStringParaParteLocal(char *str, char *PL, int TamStr){
+
+    register int cnt = 0;
+
+    for(cnt = 0; cnt < TamStr; cnt++){
+        PL[cnt] = str[cnt];
+    }
+}
 int valida_mail(char *s){
 
     register int cnt = 0, quantidadeDeNumeros = 0, quantidadeDeLetras = 0;
     int tamanhoParteLocal;
 
-    for(cnt = 0; cnt < MAX; cnt++){
-        if(s[cnt] == '\0')
-            break;
-        tamanhoParteLocal++;
-    }
+    tamanhoParteLocal = VerificaTamanhoString(s);
 
-    cnt = 0;
     //Verifica o primeiro caractere da parteLocal
     if ((int)s[cnt] < 97 || (int) s[cnt] > 122)
         return -1;
+    
     //Verifica o ultimo caractere da parteLocal
     if ((int)s[tamanhoParteLocal-1] == 46)
         return -1;
 
     for(cnt = 0; cnt < tamanhoParteLocal; cnt++){
+
+        //Verifica se a parteLocal possui algum caractere invalido
         if(((int)s[cnt] < 97 || (int) s[cnt] > 122) && ((int)s[cnt] != 46) && ((int)s[cnt] != 45) && ((int)s[cnt] != 95) && (((int)s[cnt] < 0) || (int)s[cnt] > 9))
             return -1;
+        //Verifica possui uma sequencia de pontos finais
         if ((int)s[cnt] == 46 && (int)s[cnt+1] == 46)
             return -1;
+        //Conto a quantidade de numeros
         if ((int)s[cnt] >= 0 && (int)s[cnt] <= 9)
             quantidadeDeNumeros++;
+        //Conto a quantiade de letras
         if ((int)s[cnt] >= 97 && (int) s[cnt] <= 122)
             quantidadeDeLetras++;
     }
