@@ -4,6 +4,9 @@
 #define MAX 64
 
 
+
+void DesenhaLinha();
+void DesligaPrograma();
 int VerificaTamanhoString(char *str);
 void CopiaStringParaParteLocal(char *str, char *PL, int TamStr);
 int valida_mail(char *s);
@@ -20,15 +23,17 @@ int main (){
     printf("\n\n");
 
     printf("Digite a parte local do seu email: ");
-    scanf("%s",&recebeString);
+    scanf(" %s",&recebeString);
     
-    tamanhoDaString = VerificaTamanhoString(recebeString);
+    tamanhoDaString = strlen(recebeString);
 
     parteLocal = (char *) malloc (tamanhoDaString*sizeof(char));
 
     CopiaStringParaParteLocal(recebeString,parteLocal,tamanhoDaString);
 
     resultado = valida_mail(parteLocal);
+
+    free(parteLocal);
 
     DesenhaLinha();
     if(resultado == -1)
@@ -52,19 +57,6 @@ void DesligaPrograma(){
     exit(0);
 
 }
-int VerificaTamanhoString(char *str){
-
-    register int cnt = 0;
-    int tamStr= 0;
-
-    for(cnt = 0; cnt < MAX; cnt++){
-        if(str[cnt] == '\0')
-            break;
-        tamStr++;
-    }
-
-    return tamStr;
-}
 void CopiaStringParaParteLocal(char *str, char *PL, int TamStr){
 
     register int cnt = 0;
@@ -78,7 +70,7 @@ int valida_mail(char *s){
     register int cnt = 0, quantidadeDeNumeros = 0, quantidadeDeLetras = 0;
     int tamanhoParteLocal;
 
-    tamanhoParteLocal = VerificaTamanhoString(s);
+    tamanhoParteLocal = strlen(s);
 
     //Verifica o primeiro caractere da parteLocal
     if ((int)s[cnt] < 97 || (int) s[cnt] > 122)
