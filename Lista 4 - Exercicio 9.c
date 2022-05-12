@@ -14,7 +14,6 @@ int main (){
     int vetorDeInteiros[TAMANHO], valorProcurado, resultado;
     register int cnt = 0;
 
-
     //Titulo do programa
     DesenhaLinha();
     printf("\tLista 1 - Exercicio 9\n");
@@ -46,7 +45,9 @@ int main (){
     for(cnt = 0; cnt < TAMANHO; cnt++){
         printf("%d ",vetorDeInteiros[cnt]);
     }
+    printf("\n");
 
+    DesligaPrograma();
 
 }
 void DesenhaLinha(){

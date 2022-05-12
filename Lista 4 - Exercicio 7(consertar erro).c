@@ -7,7 +7,7 @@
 void DesenhaLinha();
 void DesligaPrograma();
 int VerificaTamanhoString(char *str);
-void CopiaStringParaParteLocal(char *str, char *PL, int TamStr);
+void CopiaStringParaOutraString(char *str, char *str2);
 char* RemoveEspacos(char *str1, const char *str2);
 void CamelCase (char *s);
 int main (){
@@ -21,15 +21,18 @@ int main (){
     DesenhaLinha();
     printf("\n\n");
 
+    printf("Digite uma frase passar para CamelCase: ");
     scanf("%[^\n]",&recebeString);
 
     s = (char *) malloc (strlen(recebeString)*sizeof(char));
 
-    CopiaStringParaParteLocal(recebeString,s, strlen(recebeString));
+    CopiaStringParaOutraString(recebeString,s);
 
     CamelCase(s);
 
-    printf("media da turma em CamelCase eh: %s\n", s);
+    printf("%s em CamelCase eh: %s\n", recebeString, s);
+
+    free(s);
 
     DesligaPrograma();
 
@@ -47,12 +50,12 @@ void DesligaPrograma(){
     exit(0);
 
 }
-void CopiaStringParaParteLocal(char *str, char *PL, int TamStr){
+void CopiaStringParaOutraString(char *str, char *str2){
 
     register int cnt = 0;
 
-    for(cnt = 0; cnt < TamStr; cnt++){
-        PL[cnt] = str[cnt];
+    for(cnt = 0; cnt < strlen(str); cnt++){
+        str2[cnt] = str[cnt];
     }
 }
 char* RemoveEspacos(char *str1, const char *str2){
@@ -75,7 +78,7 @@ void CamelCase (char *s){
     register int cnt = 0;
     char stringAuxiliar[strlen(s)];
 
-    CopiaStringParaParteLocal(s,stringAuxiliar,strlen(s));
+    CopiaStringParaOutraString(s,stringAuxiliar);
 
     for(cnt = 0; cnt < strlen(s); cnt++){
         if ((int)s[cnt] == 32 )
