@@ -7,7 +7,6 @@
 
 void DesenhaLinha();
 void DesligaPrograma();
-int VerificaTamanhoString(char *str);
 void CopiaStringParaParteLocal(char *str, char *PL);
 int VerificaSePrimeiroCaractereEValido(char *str);
 int VerificaSeCaractereEValido(char *str, int ind);
@@ -21,7 +20,7 @@ int main (){
 
     //Titulo do programa
     DesenhaLinha();
-    printf("\tLista 1 - Exercicio 6\n");
+    printf("\tLista 4 - Exercicio 6\n");
     DesenhaLinha();
     printf("\n\n");
 

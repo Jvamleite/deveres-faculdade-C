@@ -16,7 +16,7 @@ int main (){
 
     //Titulo do programa
     DesenhaLinha();
-    printf("\tLista 1 - Exercicio 9\n");
+    printf("\tLista 4 - Exercicio 9\n");
     DesenhaLinha();
     printf("\n\n");
 

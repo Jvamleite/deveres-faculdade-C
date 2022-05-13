@@ -6,7 +6,7 @@
 void DesenhaLinha();
 void DesligaPrograma();
 void CopiaStringParaOutraString(char *str, char *str2);
-void ContaVogais(char *str, int *vogais);
+void ContaVogaisDaString(char *str, int *vogais);
 int main (){
 
 
@@ -16,7 +16,7 @@ int main (){
 
     //Titulo do programa
     DesenhaLinha();
-    printf("\tLista 1 - Exercicio 13\n");
+    printf("\tLista 5 - Exercicio 1\n");
     DesenhaLinha();
     printf("\n\n");
 
@@ -27,7 +27,7 @@ int main (){
 
     CopiaStringParaOutraString(recebeString,stringDoUsuario);
 
-    ContaVogais(stringDoUsuario,&numeroDeVogais);
+    ContaVogaisDaString(stringDoUsuario,&numeroDeVogais);
 
     printf("Nessa frase ah %d vogais\n",numeroDeVogais);
     
@@ -57,10 +57,9 @@ void CopiaStringParaOutraString(char *str, char *str2){
         str2[cnt] = str[cnt];
     }
 }
-void ContaVogais(char *str, int *vogais){
+void ContaVogaisDaString(char *str, int *vogais){
 
     register int cnt = 0;
-
     *vogais = 0;
 
     for(cnt = 0; cnt < strlen(str); cnt++){
