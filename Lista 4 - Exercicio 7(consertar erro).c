@@ -6,7 +6,6 @@
 
 void DesenhaLinha();
 void DesligaPrograma();
-int VerificaTamanhoString(char *str);
 void CopiaStringParaOutraString(char *str, char *str2);
 char* RemoveEspacos(char *str1, const char *str2);
 void CamelCase (char *s);
