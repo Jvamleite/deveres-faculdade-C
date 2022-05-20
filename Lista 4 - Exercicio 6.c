@@ -7,9 +7,9 @@
 
 void DesenhaLinha();
 void DesligaPrograma();
+int VerificaTamanhoString(char *str);
 void CopiaStringParaParteLocal(char *str, char *PL);
 int VerificaSePrimeiroCaractereEValido(char *str);
-int VerificaSeCaractereEValido(char *str, int ind);
 int VerificaSePossuiSequenciaDePontos(char *str, int ind);
 int valida_mail(char *s);
 int main (){
@@ -27,7 +27,7 @@ int main (){
     printf("Digite a parte local do seu email: ");
     scanf(" %s",&recebeString);
     
-    tamanhoDaString = strlen(recebeString);
+    tamanhoDaString = VerificaTamanhoString(recebeString);
 
     parteLocal = (char *) malloc (tamanhoDaString*sizeof(char));
 
@@ -59,6 +59,19 @@ void DesligaPrograma(){
     exit(0);
 
 }
+int VerificaTamanhoString(char *frase){
+
+    register int cnt = 0, cnt2 = 0;
+
+     for(cnt = 0; cnt < MAX; cnt++){
+        if (frase[cnt] == '\0')
+            break;
+        cnt2++;
+    }
+
+    return cnt2;
+
+}
 void CopiaStringParaParteLocal(char *str, char *PL){
 
     register int cnt = 0;
@@ -73,11 +86,6 @@ int VerificaSePrimeiroCaractereEValido(char *str){
     return 1;
     
 }
-int VerificaSeCaractereEValido(char *str, int ind){
-    if(((int)str[ind] < 97 || (int) str[ind] > 122) && ((int)str[ind] != 46) && ((int)str[ind] != 45) && ((int)str[ind] != 95) && (((int)str[ind] < 0) || (int)str[ind] > 9))
-            return -1;
-    return 1;
-}
 int VerificaSePossuiSequenciaDePontos(char *str, int ind){
     if ((int)str[ind] == 46 && (int)str[ind+1] == 46)
             return -1;
@@ -86,18 +94,21 @@ int VerificaSePossuiSequenciaDePontos(char *str, int ind){
 int valida_mail(char *s){
 
     register int cnt = 0, quantidadeDeNumeros = 0, quantidadeDeLetras = 0;
-    int resultado = 1;
+    int resultado = 1, tamanhoDaString;
+    
+    tamanhoDaString = VerificaTamanhoString(s);
 
     resultado = VerificaSePrimeiroCaractereEValido(s);
     
     //Verifica o ultimo caractere da parteLocal
-    if ((int)s[strlen(s)-1] == 46)
+    if ((int)s[tamanhoDaString-1] == 46)
         return -1;
 
-     while(cnt < strlen(s) || resultado != -1) {
+     while(cnt < tamanhoDaString) {
 
-        resultado = VerificaSeCaractereEValido(s,cnt);
-
+        if(((int)s[cnt] < 97 || (int) s[cnt] > 122) && ((int)s[cnt] != 46) && ((int)s[cnt] != 45) && ((int)s[cnt] != 95) && (((int)s[cnt] < 0) || (int)s[cnt] > 9))
+            return -1;
+            
         //resultado = VerificaSePossuiSequenciaDePontos(s,cnt);
 
         if ((int)s[cnt] == 46 && (int)s[cnt+1] == 46)
@@ -123,6 +134,6 @@ int valida_mail(char *s){
         if (quantidadeDeNumeros == 0)
             return -1;
 
-    return 1;
+    return resultado;
 
 }

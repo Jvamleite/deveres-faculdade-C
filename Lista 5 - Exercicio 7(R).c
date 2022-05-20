@@ -5,13 +5,14 @@
 
 void DesenhaLinha();
 void DesligaPrograma();
+int VerificaTamanhoString(char *str);
 void CopiaStringParaOutraString(char *str, char *str2);
 int main (){
 
 
 
     char recebeString[MAX], *nomeDoUsuario, abreviacao[10];
-    int quantidadeDeLetras;
+    int quantidadeDeLetras, tam;
     register int cnt = 0, cnt2 = 0;
 
     //Titulo do programa
@@ -23,7 +24,9 @@ int main (){
     printf("Digite um nome: ");
     scanf("%[^\n]",&recebeString);
 
-    nomeDoUsuario = (char *) malloc (strlen(recebeString)*sizeof(char));
+    tam = VerificaTamanhoString(recebeString);
+
+    nomeDoUsuario = (char *) malloc (tam*sizeof(char));
 
     DesenhaLinha();
 
@@ -60,6 +63,19 @@ void DesligaPrograma(){
     printf("Fim do Programa. Desligando...");
     sleep(1);
     exit(0);
+
+}
+int VerificaTamanhoString(char *frase){
+
+    register int cnt = 0, cnt2 = 0;
+
+     for(cnt = 0; cnt < MAX; cnt++){
+        if (frase[cnt] == '\0')
+            break;
+        cnt2++;
+    }
+
+    return cnt2;
 
 }
 void CopiaStringParaOutraString(char *str, char *str2){

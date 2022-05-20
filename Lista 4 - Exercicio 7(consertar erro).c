@@ -6,6 +6,7 @@
 
 void DesenhaLinha();
 void DesligaPrograma();
+int VerificaTamanhoString(char *str);
 void CopiaStringParaOutraString(char *str, char *str2);
 char* RemoveEspacos(char *str1, const char *str2);
 void CamelCase (char *s);
@@ -13,6 +14,7 @@ int main (){
 
 
     char *s, recebeString[MAX];
+    int tam;
 
     //Titulo do programa
     DesenhaLinha();
@@ -23,7 +25,9 @@ int main (){
     printf("Digite uma frase passar para CamelCase: ");
     scanf("%[^\n]",&recebeString);
 
-    s = (char *) malloc (strlen(recebeString)*sizeof(char));
+    tam = VerificaTamanhoString(recebeString);
+
+    s = (char *) malloc (tam*sizeof(char));
 
     CopiaStringParaOutraString(recebeString,s);
 
@@ -47,6 +51,19 @@ void DesligaPrograma(){
     printf("Fim do Programa. Desligando...");
     sleep(1);
     exit(0);
+
+}
+int VerificaTamanhoString(char *frase){
+
+    register int cnt = 0, cnt2 = 0;
+
+     for(cnt = 0; cnt < MAX; cnt++){
+        if (frase[cnt] == '\0')
+            break;
+        cnt2++;
+    }
+
+    return cnt2;
 
 }
 void CopiaStringParaOutraString(char *str, char *str2){

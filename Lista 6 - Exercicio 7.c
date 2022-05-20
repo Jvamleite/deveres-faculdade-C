@@ -9,7 +9,6 @@ void DesligaPrograma();
 void repeticao(int *vet, int tam);
 int main (){
 
-    register int cnt = 0, cnt2 = 0;
     int tam, *vet;
 
     //Titulo do programa
@@ -25,21 +24,7 @@ int main (){
 
     vet = (int *) malloc (tam*sizeof(int));
 
-    DesenhaLinha();
-    printf("Vetor vet: ");
-    for(cnt = 0; cnt < tam; cnt++){
-        vet[cnt] = rand()%10;
-        printf("\n%d",vet[cnt]);
-    }
-
-
-
-    printf("\nRepeticoes no vetor: ");
-    for(cnt = 0; cnt < tam; cnt++)
-        for(cnt2 = cnt+1; cnt2 < tam; cnt2++)
-            if (vet[cnt] == vet[cnt2])
-                printf("%d ",vet[cnt]);
-    printf("\n");
+   repeticao(vet,tam);
 
     free(vet);
 
@@ -59,4 +44,24 @@ void DesligaPrograma(){
     exit(0);
 
 }
+void repeticao(int *vet, int tam){
 
+    register int cnt = 0, cnt2 = 0;
+
+    DesenhaLinha();
+    printf("Vetor vet: ");
+    for(cnt = 0; cnt < tam; cnt++){
+        vet[cnt] = rand()%10;
+        printf("\n%d",vet[cnt]);
+    }
+
+
+
+    printf("\nRepeticoes no vetor: ");
+    for(cnt = 0; cnt < tam; cnt++)
+        for(cnt2 = cnt+1; cnt2 < tam; cnt2++)
+            if (vet[cnt] == vet[cnt2])
+                printf("%d ",vet[cnt]);
+    printf("\n");
+
+}

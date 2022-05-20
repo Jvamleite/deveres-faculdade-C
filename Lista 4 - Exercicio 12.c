@@ -5,6 +5,7 @@
 
 void DesenhaLinha();
 void DesligaPrograma();
+int VerificaTamanhoString(char * str);
 void CopiaStringParaOutraString(char *str, char *str2);
 int main (){
 
@@ -12,6 +13,7 @@ int main (){
 
     char recebeString[MAX], *stringDoUsuario, caractere, *stringFinal;
     register int cnt = 0;
+    int tam;
 
 
     //Titulo do programa
@@ -26,9 +28,11 @@ int main (){
     printf("Digite um caractere para remover da frase: ");
     scanf(" %c",&caractere);
 
-    stringDoUsuario = (char *) malloc (strlen(recebeString)*(sizeof(char)));
+    tam = VerificaTamanhoString(recebeString);
 
-    stringFinal = (char *) malloc (strlen(recebeString)*(sizeof(char)));
+    stringDoUsuario = (char *) malloc (tam*(sizeof(char)));
+
+    stringFinal = (char *) malloc (tam*(sizeof(char)));
 
     CopiaStringParaOutraString(recebeString,stringDoUsuario);
 
@@ -58,6 +62,19 @@ void DesligaPrograma(){
     printf("Fim do Programa. Desligando...");
     sleep(1);
     exit(0);
+
+}
+int VerificaTamanhoString(char *frase){
+
+    register int cnt = 0, cnt2 = 0;
+
+     for(cnt = 0; cnt < MAX; cnt++){
+        if (frase[cnt] == '\0')
+            break;
+        cnt2++;
+    }
+
+    return cnt2;
 
 }
 void CopiaStringParaOutraString(char *str, char *str2){
