@@ -5,6 +5,7 @@
 void DesenhaLinha();
 void DesligaPrograma();
 void PreencheVetorComOsMultiplosDe5(int *vetor);
+void ImprimeVetor(int *vetor);
 int main (){
 
 
@@ -19,11 +20,7 @@ int main (){
 
     PreencheVetorComOsMultiplosDe5(vetor);
 
-    for(cnt = 0; cnt < MAX; cnt++)
-        printf("%d multiplo de 5: %d\n",cnt,vetor[cnt]);
-
-
-
+    ImprimeVetor(vetor);
 
     DesligaPrograma();
 
@@ -47,4 +44,11 @@ void PreencheVetorComOsMultiplosDe5(int *vetor){
 
     for(cnt = 0; cnt < MAX; cnt++)
         vetor[cnt] = 5 * cnt;
+}
+void ImprimeVetor(int *vetor){
+
+    register int cnt = 0;
+
+    for(cnt = 0; cnt < MAX; cnt++)
+        printf("%d multiplo de 5: %d\n",cnt,vetor[cnt]);
 }
