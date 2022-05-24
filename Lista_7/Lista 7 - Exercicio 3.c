@@ -1,16 +1,23 @@
 #include <stdio.h>
 #include <stdlib.h>
+#define MAX 10
 
 void DesenhaLinha();
 void DesligaPrograma();
 int main (){
 
+
+    int vetor[MAX];
+    register int cnt = 0;
+
     //Titulo do programa
     DesenhaLinha();
-    printf("\tLista  - Exercicio \n");
+    printf("\tLista 7 - Exercicio 3\n");
     DesenhaLinha();
     printf("\n\n");
 
+    for(cnt = 0; cnt < MAX; cnt++)
+        vetor[cnt] = 5 * cnt;
 
     
 
