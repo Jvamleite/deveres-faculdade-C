@@ -1,7 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <ctype.h>
-#define MAX 20
 
 void DesenhaLinha();
 void DesligaPrograma();
@@ -9,7 +7,7 @@ int main (){
 
     //Titulo do programa
     DesenhaLinha();
-    printf("\tLista 5 - Exercicio 10\n");
+    printf("\tLista  - Exercicio \n");
     DesenhaLinha();
     printf("\n\n");
 
