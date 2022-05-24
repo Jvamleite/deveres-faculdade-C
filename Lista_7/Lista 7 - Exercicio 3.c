@@ -19,8 +19,8 @@ int main (){
     for(cnt = 0; cnt < MAX; cnt++)
         vetor[cnt] = 5 * cnt;
 
-    
-
+    for(cnt = 0; cnt < MAX; cnt++)
+        printf("%d multiplo de 5: %d",vetor[cnt]);
 
 
     DesenhaLinha();
