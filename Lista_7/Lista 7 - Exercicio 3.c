@@ -1,15 +1,16 @@
 #include <stdio.h>
 #include <stdlib.h>
-#define MAX 10
+
+
 
 void DesenhaLinha();
 void DesligaPrograma();
-void PreencheVetorComOsMultiplosDe5(int *vetor);
-void ImprimeVetor(int *vetor);
+void PreencheVetorComOsMultiplosDe5(int n, int *vetor);
+void ImprimeVetor(int n, int *vetor);
 int main (){
 
 
-    int vetor[MAX];
+    int *vetor, n;
     register int cnt = 0;
 
     //Titulo do programa
@@ -18,9 +19,14 @@ int main (){
     DesenhaLinha();
     printf("\n\n");
 
-    PreencheVetorComOsMultiplosDe5(vetor);
+    printf("Digite quantos multiplos de 5 devemos imprimir: ");
+    scanf("%d",&n);
 
-    ImprimeVetor(vetor);
+    vetor = (int *) malloc (n*sizeof(int));
+
+    PreencheVetorComOsMultiplosDe5(n,vetor);
+
+    ImprimeVetor(n,vetor);
 
     DesligaPrograma();
 
@@ -38,17 +44,17 @@ void DesligaPrograma(){
     exit(0);
 
 }
-void PreencheVetorComOsMultiplosDe5(int *vetor){
+void PreencheVetorComOsMultiplosDe5(int n, int *vetor){
 
     register int cnt = 0;
 
-    for(cnt = 0; cnt < MAX; cnt++)
+    for(cnt = 0; cnt < n; cnt++)
         vetor[cnt] = 5 * cnt;
 }
-void ImprimeVetor(int *vetor){
+void ImprimeVetor(int n, int *vetor){
 
     register int cnt = 0;
 
-    for(cnt = 0; cnt < MAX; cnt++)
+    for(cnt = 0; cnt < n; cnt++)
         printf("%d multiplo de 5: %d\n",cnt,vetor[cnt]);
 }
