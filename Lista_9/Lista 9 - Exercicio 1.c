@@ -102,6 +102,10 @@ int main (){
         break;
     }
 
+    for(cnt = 0; cnt < numeroDeCandidatos; cnt++)
+        free(candidatos[cnt].loc);
+    free(candidatos);
+
     DesligaPrograma();
 
     return 0;
