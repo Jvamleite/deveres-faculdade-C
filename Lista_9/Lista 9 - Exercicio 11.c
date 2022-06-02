@@ -29,13 +29,13 @@ int main (){
     DesenhaLinha();
     printf("\n\n");
 
-    //Professor se vc puder me dizer aonde eu errei nessa questão pq o debugger não consegue
-
     printf("Digite o numero de alunos de determinada materia: ");
     scanf("%d",&numeroDeAlunos);
 
     materia = fillMateria(numeroDeAlunos);
     
+    Printf("Informações Registradas: ");
+    DesenhaLinha();
     mostraMateria(materia);
 
     
@@ -60,6 +60,8 @@ Aluno* fillAluno(){
 
     Aluno *a;
     register int cnt = 0;
+
+    a->vNotas = (float *) malloc (5*sizeof(float));
     
     printf("Digite o numero de matricula do aluno: ");
     scanf("%d",&a -> matricula);
@@ -70,7 +72,7 @@ Aluno* fillAluno(){
     }
 
     printf("Digite o nome do aluno: ");
-    scanf("%[^\n]",&a -> nome);
+    scanf(" %[^\n]",&a -> nome);
 
     return a;
 
@@ -86,7 +88,7 @@ void mediaMateria(Materia *m1){
      for(cnt = 0; cnt < m1 -> nAlunos; cnt++){
         somaNotas = 0;
         for(cnt2 = 0; cnt2 < 5; cnt2++ ){
-            somaNotas = m1 -> V[cnt].vNotas[cnt2];
+            somaNotas += m1 -> V[cnt].vNotas[cnt2];
          }
         m1 -> media[cnt] = somaNotas/5;
      }
@@ -96,6 +98,8 @@ Materia * fillMateria(int numAlunos){
 
     Materia *m;
     register int cnt = 0;
+
+    m->V = (Aluno *) malloc (numAlunos*sizeof(Aluno));
 
     m -> nAlunos = numAlunos;
     for(cnt = 0; cnt < numAlunos; cnt++){
@@ -116,7 +120,7 @@ void mostraMateria(Materia *m1){
     for(cnt = 0; cnt < m1 -> nAlunos; cnt++){
         printf("Aluno: %s\n",m1 -> V[cnt].nome);
         printf("Numero de matricula: %d\n", m1 -> V[cnt].matricula);
-        printf("Media fina na materia: %.2f\n",m1 -> media[cnt]);
+        printf("Media final na materia: %.2f\n",m1 -> media[cnt]);
     }
     
 }
