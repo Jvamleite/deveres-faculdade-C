@@ -26,7 +26,7 @@ int main (){
     do{
         cnt++;
         printf("Digite o %d nome: ",cnt+1);
-        scanf("%[^\n]", &nomes[cnt]);
+        scanf(" %[^\n]", &nomes[cnt]);
         fflush(stdin);
     } while(strcmp(nomes[cnt],"fim") != 0);
 
